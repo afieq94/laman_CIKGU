@@ -9,6 +9,8 @@ import {
   Sparkles,
   Wifi,
 } from "lucide-react";
+import { getMenuItems } from "@/lib/sanity/fetch";
+import { Sidebar, MobileNav } from "@/components/Sidebar";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -26,36 +28,6 @@ function InstagramIcon({ className }: { className?: string }) {
   );
 }
 
-const menuItems = [
-  {
-    category: "Pastries & Bites",
-    name: "Croissant Kaya Butter",
-    description:
-      "Pastri mentega rangup dengan kaya buatan sendiri — pairing sempurna untuk kopi pagi anda.",
-    price: "RM 14",
-    image:
-      "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80",
-  },
-  {
-    category: "Signature Plates",
-    name: "Nasi Lemak Cikgu Special",
-    description:
-      "Hidangan utama kebanggaan kami — nasi lemak dengan ayam goreng berempah dan sambal istimewa.",
-    price: "RM 28",
-    image:
-      "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=800&q=80",
-  },
-  {
-    category: "Sweet Finish",
-    name: "Pandan Crème Brûlée",
-    description:
-      "Krim pandan lembut dengan topping gula karamel renyah — penutup manis yang elegan.",
-    price: "RM 18",
-    image:
-      "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80",
-  },
-];
-
 const highlights = [
   { icon: Coffee, label: "Kopi Artisan" },
   { icon: Leaf, label: "Bahan Segar" },
@@ -63,45 +35,16 @@ const highlights = [
   { icon: Sparkles, label: "Suasana Cozy" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const menuItems = await getMenuItems();
+
   return (
-    <div className="cafe-grain flex min-h-screen flex-col">
-      {/* Navigation */}
-      <header className="fixed inset-x-0 top-0 z-50">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6 lg:px-8">
-          <div className="flex w-full items-center justify-between rounded-full border border-stone-200/80 bg-cream/80 px-5 py-3 shadow-sm backdrop-blur-xl">
-            <a href="#" className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-coffee">
-                <Coffee className="h-4 w-4 text-cream" strokeWidth={1.5} />
-              </div>
-              <span className="font-display text-lg font-semibold tracking-tight text-coffee">
-                Laman CIKGU
-              </span>
-            </a>
-
-            <div className="hidden items-center gap-8 text-sm font-medium text-stone-600 md:flex">
-              <a href="#menu" className="transition-colors hover:text-coffee">
-                Menu
-              </a>
-              <a href="#about" className="transition-colors hover:text-coffee">
-                Cerita Kami
-              </a>
-              <a href="#contact" className="transition-colors hover:text-coffee">
-                Kunjungi
-              </a>
-            </div>
-
-            <a
-              href="#contact"
-              className="rounded-full bg-coffee px-5 py-2 text-sm font-medium text-cream transition-all hover:bg-stone-800"
-            >
-              Tempah Meja
-            </a>
-          </div>
-        </nav>
-      </header>
-
-      {/* Hero Section */}
+    <div className="cafe-grain flex min-h-screen">
+      <Sidebar />
+      <MobileNav />
+      
+      <main className="flex-1 lg:pl-64">
+        {/* Hero Section */}
       <section className="relative overflow-hidden pt-28 sm:pt-32">
         <div className="pointer-events-none absolute -right-20 top-20 h-72 w-72 rounded-full bg-caramel/15 blur-3xl" />
         <div className="pointer-events-none absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-sage/20 blur-3xl" />
@@ -393,6 +336,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      </main>
     </div>
   );
 }
