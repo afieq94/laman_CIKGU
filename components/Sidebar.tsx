@@ -1,4 +1,5 @@
-import { Coffee, Home, Menu, Info, MapPin, Phone, Clock } from "lucide-react";
+import { Coffee, Home, Menu, Info, MapPin, Phone, Clock, ShoppingCart } from "lucide-react";
+import { CartSheet } from "./CartSheet";
 
 export function Sidebar() {
   return (
@@ -18,6 +19,9 @@ export function Sidebar() {
           <SidebarLink href="#menu" icon={Menu}>Menu</SidebarLink>
           <SidebarLink href="#about" icon={Info}>Cerita Kami</SidebarLink>
           <SidebarLink href="#contact" icon={MapPin}>Kunjungi</SidebarLink>
+          <div className="mt-4 pt-4 border-t border-stone-200/60 lg:hidden block">
+             {/* This is for mobile, but we handle it differently below */}
+          </div>
         </nav>
 
         <div className="mt-auto pt-6 border-t border-stone-200/60">
@@ -61,6 +65,9 @@ export function MobileNav() {
     <div className="fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1 rounded-full border border-stone-200/80 bg-cream/80 p-2 shadow-xl backdrop-blur-xl lg:hidden">
       <MobileNavLink href="#" icon={Home} />
       <MobileNavLink href="#menu" icon={Menu} />
+      <div className="px-2">
+        <CartSheet />
+      </div>
       <MobileNavLink href="#about" icon={Info} />
       <MobileNavLink href="#contact" icon={MapPin} />
     </div>

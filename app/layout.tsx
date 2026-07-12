@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import { DM_Sans, Playfair_Display } from "next/font/google";
+import { DM_Sans, Playfair_Display, Geist } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -26,7 +29,7 @@ export default function RootLayout({
   return (
     <html
       lang="ms"
-      className={`${dmSans.variable} ${playfair.variable} h-full scroll-smooth antialiased`}
+      className={cn("h-full", "scroll-smooth", "antialiased", dmSans.variable, playfair.variable, "font-sans", geist.variable)}
     >
       <body className="min-h-full font-sans text-coffee">{children}</body>
     </html>

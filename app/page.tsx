@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import { getMenuItems } from "@/lib/sanity/fetch";
 import { Sidebar, MobileNav } from "@/components/Sidebar";
+import { AddToCartButton } from "@/components/AddToCartButton";
+import { CartSheet } from "@/components/CartSheet";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -61,6 +63,10 @@ export default async function Home() {
               <br />
               <span className="italic text-caramel">CIKGU</span>
             </h1>
+
+            <div className="absolute right-4 top-4 hidden lg:block">
+              <CartSheet />
+            </div>
 
             <p className="mt-6 max-w-md text-lg leading-relaxed text-stone-600">
               Citarasa Authentic, Sentuhan Hati — ruang di mana kopi artisan
@@ -168,6 +174,14 @@ export default async function Home() {
                   <p className="mt-2 text-sm leading-relaxed text-stone-500">
                     {item.description}
                   </p>
+                  <AddToCartButton 
+                    item={{
+                      id: item.name, // Using name as ID since menuItems doesn't have ID in the mock/fetch
+                      name: item.name,
+                      price: item.price,
+                      image: item.image
+                    }} 
+                  />
                 </div>
 
                 <span className="absolute right-5 top-5 flex h-7 w-7 items-center justify-center rounded-full bg-white/90 text-xs font-medium text-coffee shadow-sm">
