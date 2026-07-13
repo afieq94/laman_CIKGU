@@ -8,6 +8,7 @@ const FALLBACK_MENU_ITEMS: DisplayMenuItem[] = [
   {
     id: "fallback-1",
     name: "Croissant Kaya Butter",
+    category: "Pastri",
     description:
       "Pastri mentega rangup dengan kaya buatan sendiri — pairing sempurna untuk kopi pagi anda.",
     price: "RM 14",
@@ -17,6 +18,7 @@ const FALLBACK_MENU_ITEMS: DisplayMenuItem[] = [
   {
     id: "fallback-2",
     name: "Nasi Lemak Cikgu Special",
+    category: "Hidangan Utama",
     description:
       "Hidangan utama kebanggaan kami — nasi lemak dengan ayam goreng berempah dan sambal istimewa.",
     price: "RM 28",
@@ -26,6 +28,7 @@ const FALLBACK_MENU_ITEMS: DisplayMenuItem[] = [
   {
     id: "fallback-3",
     name: "Pandan Crème Brûlée",
+    category: "Pencuci Mulut",
     description:
       "Krim pandan lembut dengan topping gula karamel renyah — penutup manis yang elegan.",
     price: "RM 18",
@@ -38,6 +41,7 @@ function toDisplayMenuItem(item: SanityMenuItem): DisplayMenuItem {
   return {
     id: item._id,
     name: item.title,
+    category: item.category ?? "Pilihan Cikgu",
     description: item.description,
     price: `RM ${item.price}`,
     image: urlForImage(item.image).width(800).height(600).fit("crop").url(),

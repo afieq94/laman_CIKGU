@@ -1,4 +1,13 @@
-import { Coffee, Home, Menu, Info, MapPin, Phone, Clock, ShoppingCart } from "lucide-react";
+import {
+  Clock,
+  Coffee,
+  Home,
+  Info,
+  MapPin,
+  Menu,
+  Phone,
+  type LucideIcon,
+} from "lucide-react";
 import { CartSheet } from "./CartSheet";
 
 export function Sidebar() {
@@ -48,7 +57,7 @@ export function Sidebar() {
   );
 }
 
-function SidebarLink({ href, icon: Icon, children }: { href: string; icon: any; children: React.ReactNode }) {
+function SidebarLink({ href, icon: Icon, children }: { href: string; icon: LucideIcon; children: React.ReactNode }) {
   return (
     <a
       href={href}
@@ -74,7 +83,7 @@ export function MobileNav() {
   );
 }
 
-function MobileNavLink({ href, icon: Icon }: { href: string; icon: any }) {
+function MobileNavLink({ href, icon: Icon }: { href: string; icon: LucideIcon }) {
   return (
     <a
       href={href}

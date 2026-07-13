@@ -145,7 +145,7 @@ export default async function Home() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {menuItems.map((item, index) => (
               <article
-                key={item.category}
+                key={item.name}
                 className="group relative overflow-hidden rounded-3xl border border-stone-200/80 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-caramel/40 hover:shadow-xl hover:shadow-coffee/5"
               >
                 <div className="relative h-52 overflow-hidden sm:h-56">

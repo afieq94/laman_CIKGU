@@ -12,16 +12,16 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 export function CartSheet() {
   const { items, updateQuantity, removeItem, getTotalPrice, getTotalItems } = useCart();
-  const [mounted, setMounted] = useState(false);
-
-  // Prevent hydration error
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // Render only after hydration so persisted cart data cannot mismatch the server HTML.
+  const mounted = useSyncExternalStore(
+    () => () => undefined,
+    () => true,
+    () => false
+  );
 
   if (!mounted) return null;
 
@@ -29,15 +29,15 @@ export function CartSheet() {
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline" size="icon" className="relative rounded-full">
+      <DialogTrigger
+        render={<Button variant="outline" size="icon" className="relative rounded-full" />}
+      >
           <ShoppingCart className="h-5 w-5" />
           {items.length > 0 && (
             <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-caramel text-[10px] font-bold text-white">
               {getTotalItems()}
             </span>
           )}
-        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

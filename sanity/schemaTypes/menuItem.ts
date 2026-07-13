@@ -12,6 +12,20 @@ export const menuItem = defineType({
       validation: (Rule) => Rule.required().min(2).max(80),
     }),
     defineField({
+      name: "category",
+      title: "Kategori",
+      type: "string",
+      options: {
+        list: [
+          { title: "Pastri", value: "Pastri" },
+          { title: "Hidangan Utama", value: "Hidangan Utama" },
+          { title: "Pencuci Mulut", value: "Pencuci Mulut" },
+          { title: "Minuman", value: "Minuman" },
+        ],
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "description",
       title: "Deskripsi",
       type: "text",
@@ -43,7 +57,7 @@ export const menuItem = defineType({
     prepare({ title, price, media }) {
       return {
         title,
-        subtitle: price ? `RM ${price}` : "Tiada harga",
+        subtitle: price ? `RM ${price}` : "No price",
         media,
       };
     },
