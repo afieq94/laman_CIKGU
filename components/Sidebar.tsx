@@ -26,6 +26,11 @@ export function Sidebar() {
         <nav className="flex-1 space-y-2">
           <SidebarLink href="#" icon={Home}>Utama</SidebarLink>
           <SidebarLink href="#menu" icon={Menu}>Menu</SidebarLink>
+          <div className="ml-5 border-l border-stone-200 pl-3 text-xs">
+            <a href="#menu-main" className="block py-1.5 text-stone-500 transition-colors hover:text-caramel">Main</a>
+            <a href="#menu-side-dish" className="block py-1.5 text-stone-500 transition-colors hover:text-caramel">Side Dish</a>
+            <a href="#menu-drink" className="block py-1.5 text-stone-500 transition-colors hover:text-caramel">Drink</a>
+          </div>
           <SidebarLink href="#about" icon={Info}>Cerita Kami</SidebarLink>
           <SidebarLink href="#contact" icon={MapPin}>Kunjungi</SidebarLink>
           <div className="mt-4 pt-4 border-t border-stone-200/60 lg:hidden block">

@@ -17,10 +17,9 @@ export const menuItem = defineType({
       type: "string",
       options: {
         list: [
-          { title: "Pastri", value: "Pastri" },
-          { title: "Hidangan Utama", value: "Hidangan Utama" },
-          { title: "Pencuci Mulut", value: "Pencuci Mulut" },
-          { title: "Minuman", value: "Minuman" },
+          { title: "Main", value: "Main" },
+          { title: "Side Dish", value: "Side Dish" },
+          { title: "Drink", value: "Drink" },
         ],
       },
       validation: (Rule) => Rule.required(),

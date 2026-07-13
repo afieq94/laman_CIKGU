@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { getMenuItems } from "@/lib/sanity/fetch";
 import { Sidebar, MobileNav } from "@/components/Sidebar";
-import { AddToCartButton } from "@/components/AddToCartButton";
+import { MenuBrowser } from "@/components/MenuBrowser";
 import { CartSheet } from "@/components/CartSheet";
 
 function FacebookIcon({ className }: { className?: string }) {
@@ -142,54 +142,7 @@ export default async function Home() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-            {menuItems.map((item, index) => (
-              <article
-                key={item.name}
-                className="group relative overflow-hidden rounded-3xl border border-stone-200/80 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-caramel/40 hover:shadow-xl hover:shadow-coffee/5"
-              >
-                <div className="relative h-52 overflow-hidden sm:h-56">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-coffee/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                </div>
-
-                <div className="p-6">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-medium uppercase tracking-widest text-caramel">
-                      {item.category}
-                    </span>
-                    <span className="font-display text-lg font-semibold text-coffee">
-                      {item.price}
-                    </span>
-                  </div>
-                  <h3 className="font-display mt-3 text-xl font-semibold text-coffee transition-colors group-hover:text-caramel">
-                    {item.name}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-stone-500">
-                    {item.description}
-                  </p>
-                  <AddToCartButton 
-                    item={{
-                      id: item.name, // Using name as ID since menuItems doesn't have ID in the mock/fetch
-                      name: item.name,
-                      price: item.price,
-                      image: item.image
-                    }} 
-                  />
-                </div>
-
-                <span className="absolute right-5 top-5 flex h-7 w-7 items-center justify-center rounded-full bg-white/90 text-xs font-medium text-coffee shadow-sm">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-              </article>
-            ))}
-          </div>
+          <MenuBrowser items={menuItems} />
         </div>
       </section>
 
